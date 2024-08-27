@@ -1,0 +1,12 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 2024.08.19
+_src_path: gh:scientific-python/cookie
+backend: hatch
+email: nstarman@users.noreply.github.com
+full_name: Nathaniel Starkman
+license: MIT
+org: GalacticDynamics
+project_name: is_annotated
+project_short_description: Check if a type hint is an `Annotated` type.
+url: https://github.com/GalacticDynamics/is_annotated
+vcs: true
