@@ -3,6 +3,7 @@
 from typing import Annotated
 
 import pytest
+
 from is_annotated import isannotated
 
 

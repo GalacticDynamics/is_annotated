@@ -30,7 +30,6 @@ print(isannotated(int))
 
 print(isannotated(Annotated[int, "1"]))
 # True
-
 ```
 
 <!-- prettier-ignore-start -->
