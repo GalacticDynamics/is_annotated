@@ -24,7 +24,7 @@
     "Typing :: Typed",
   ]
   dependencies = ["typing_extensions >= 4.0"]
-  description = "Efficiently get the index-0 element of an iterable."
+  description = "Check if an object is an `Annotated` type."
   dynamic = ["version"]
   license.file = "LICENSE"
   name = "is_annotated"
