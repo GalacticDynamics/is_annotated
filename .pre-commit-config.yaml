@@ -1,4 +1,5 @@
 ci:
+  autoupdate_schedule: "quarterly"
   autoupdate_commit_msg: "chore: update pre-commit hooks"
   autofix_commit_msg: "style: pre-commit fixes"
 
@@ -42,7 +43,7 @@ repos:
         args: [--prose-wrap=always]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.6.3"
+    rev: "v0.6.4"
     hooks:
       - id: ruff
         args: ["--fix", "--show-fixes"]
