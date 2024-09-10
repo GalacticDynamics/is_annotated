@@ -6,7 +6,6 @@ is_annotated: Check if a type hint is an `Annotated` type.
 __all__ = ["isannotated"]
 
 from typing import Annotated
-
 from typing_extensions import TypeGuard, _AnnotatedAlias
 
 AnnotationType = type(Annotated[int, "_"])
