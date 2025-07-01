@@ -1,5 +1,5 @@
 <h1 align='center'> <code>is_annotated</code> </h1>
-<h2 align="center">Check if an object is an <code>Annotated</code> type.</h2>
+<h3 align="center">Check if an object is an <code>Annotated</code> type.</h3>
 
 This is a micro-package, containing the single function `isannotated` to check
 if a type hint is an `Annotated` type. `Annotated` objects can't be checked by
