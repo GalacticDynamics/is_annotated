@@ -32,15 +32,22 @@
   readme = "README.md"
   requires-python = ">=3.9"
 
-  [project.optional-dependencies]
-    dev = ["is_annotated[test]"]
-    test = [
-      "optional_dependencies >= 0.3",
-      "pytest >=6",
-      "pytest-cov >=3",
-      "pytest-github-actions-annotate-failures",
-      "sybil",
-    ]
+[dependency-groups]
+  dev = [
+    "cz-conventional-gitmoji>=0.6.1",
+    "ipykernel>=6.29.5",
+    "pre-commit>=4.0.1",
+    "uv>=0.6.4",
+    { include-group = "test" },
+  ]
+  test = [
+    "optional_dependencies >= 0.3",
+    "pytest >=6",
+    "pytest-cov >=3",
+    "pytest-github-actions-annotate-failures",
+    "sybil",
+    "nox"
+  ]
 
   [project.urls]
     "Bug Tracker" = "https://github.com/GalacticDynamics/is_annotated/issues"
@@ -67,7 +74,7 @@
   filterwarnings = ["error"]
   log_cli_level = "INFO"
   minversion = "6.0"
-  testpaths = ["tests/", "src/"]
+  testpaths = ["src/", "tests/"]
   xfail_strict = true
 
 
@@ -103,7 +110,7 @@
       "PLR09",   # Too many <...>
       "PLR2004", # Magic value used in comparison
       "TD002",   # Missing author in TODO
-      "TD003"    # Missing issue link on the line following this TODO
+      "TD003",   # Missing issue link on the line following this TODO
     ]
 
     [tool.ruff.lint.per-file-ignores]
@@ -111,10 +118,10 @@
       "tests/**"   = ["ANN", "INP001", "S101", "T20"]
 
     [tool.ruff.lint.isort]
-      combine-as-imports = true
+      combine-as-imports     = true
       extra-standard-library = ["typing_extensions"]
-      known-first-party = ["optional_dependencies"]
-      known-local-folder = ["is_annotated"]
+      known-first-party      = ["optional_dependencies"]
+      known-local-folder     = ["is_annotated"]
 
 
 [tool.pylint]
