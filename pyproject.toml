@@ -46,6 +46,7 @@
     "pytest-cov >=3",
     "pytest-github-actions-annotate-failures",
     "sybil",
+    "nox"
   ]
 
   [project.urls]
