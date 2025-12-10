@@ -40,6 +40,12 @@
     "uv>=0.6.4",
     { include-group = "test" },
   ]
+lint = [
+    "pylint>=3.3.9",
+]
+nox = [
+    "nox-uv>=0.6.3",
+]
   test = [
     "optional_dependencies >= 0.3",
     "pytest >=6",
