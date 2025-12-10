@@ -20,6 +20,7 @@ def lint(s: nox.Session, /) -> None:
     """Run the linter."""
     precommit(s)  # reuse pre-commit session
     pylint(s)  # reuse pylint session
+    mypy(s)  # reuse mypy session
 
 
 @session(uv_groups=["lint"], reuse_venv=True)
