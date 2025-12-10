@@ -18,9 +18,9 @@ DIR = Path(__file__).parent.resolve()
 @session(uv_groups=["lint"], reuse_venv=True)
 def lint(s: nox.Session, /) -> None:
     """Run the linter."""
-    precommit(s)  # reuse pre-commit session
-    pylint(s)  # reuse pylint session
-    mypy(s)  # reuse mypy session
+    s.notify("precommit")
+    s.notify("pylint")
+    s.notify("mypy")
 
 
 @session(uv_groups=["lint"], reuse_venv=True)
