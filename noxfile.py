@@ -1,52 +1,66 @@
-"""Nox configuration."""
+"""Nox setup."""
 
 import shutil
 from pathlib import Path
 
 import nox
+from nox_uv import session
+
+nox.needs_version = ">=2024.3.2"
+nox.options.default_venv_backend = "uv"
 
 DIR = Path(__file__).parent.resolve()
 
-nox.needs_version = ">=2024.3.2"
-nox.options.sessions = ["lint", "pylint", "tests"]
-nox.options.default_venv_backend = "uv"
+# =============================================================================
+# Linting
 
 
-@nox.session
-def lint(session: nox.Session) -> None:
+@session(uv_groups=["lint"], reuse_venv=True)
+def lint(s: nox.Session, /) -> None:
     """Run the linter."""
-    session.install("pre-commit")
-    session.run(
-        "pre-commit",
-        "run",
-        "--all-files",
-        "--show-diff-on-failure",
-        *session.posargs,
-    )
+    s.notify("precommit")
+    s.notify("pylint")
+    s.notify("mypy")
 
 
-@nox.session
-def pylint(session: nox.Session) -> None:
+@session(uv_groups=["lint"], reuse_venv=True)
+def precommit(s: nox.Session, /) -> None:
+    """Run pre-commit."""
+    s.run("pre-commit", "run", "--all-files", *s.posargs)
+
+
+@session(uv_groups=["lint"], reuse_venv=True)
+def pylint(s: nox.Session, /) -> None:
     """Run PyLint."""
-    # This needs to be installed into the package environment, and is slower
-    # than a pre-commit check
-    session.install(".", "pylint>=3.2")
-    session.run("pylint", "is_annotated", *session.posargs)
+    s.install(".", "pylint>=3.2")
+    s.run("pylint", "is_annotated", *s.posargs)
 
 
-@nox.session
-def tests(session: nox.Session) -> None:
+@session(uv_groups=["lint"], reuse_venv=True)
+def mypy(s: nox.Session, /) -> None:
+    """Run mypy."""
+    s.run("mypy", "src/is_annotated", *s.posargs)
+
+
+# =============================================================================
+# Testing
+
+
+@session(uv_groups=["test"], reuse_venv=True)
+def pytest(s: nox.Session, /) -> None:
     """Run the unit and regular tests."""
-    session.install(".[test]")
-    session.run("pytest", *session.posargs)
+    s.run("pytest", *s.posargs)
 
 
-@nox.session
-def build(session: nox.Session) -> None:
+# =============================================================================
+# Build
+
+
+@session(uv_groups=["build"])
+def build(s: nox.Session, /) -> None:
     """Build an SDist and wheel."""
     build_path = DIR.joinpath("build")
     if build_path.exists():
         shutil.rmtree(build_path)
 
-    session.install("build")
-    session.run("python", "-m", "build")
+    s.run("python", "-m", "build")
