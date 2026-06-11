@@ -5,9 +5,8 @@ is_annotated: Check if a type hint is an `Annotated` type.
 
 __all__ = ["isannotated"]
 
-from typing import Annotated
+from typing import Annotated, TypeGuard
 from typing_extensions import (  # pylint: disable=no-name-in-module
-    TypeGuard,
     _AnnotatedAlias,
 )
 
