@@ -1,4 +1,7 @@
-"""Unit tests."""
+"""Copyright (c) 2024 Nathaniel Starkman. All rights reserved.
+
+Unit tests.
+"""
 
 from typing import Annotated
 

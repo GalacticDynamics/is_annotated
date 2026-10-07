@@ -1,4 +1,7 @@
-"""Doctest configuration."""
+"""Copyright (c) 2024 Nathaniel Starkman. All rights reserved.
+
+Doctest configuration.
+"""
 
 import platform
 from doctest import ELLIPSIS, NORMALIZE_WHITESPACE
