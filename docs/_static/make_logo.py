@@ -2,7 +2,9 @@
 # requires-python = ">=3.11"
 # dependencies = ["resvg-py"]
 # ///
-"""Draw the is_annotated logo: ``Annotated[T, metadata]``, checked.
+"""Copyright (c) 2024 Nathaniel Starkman. All rights reserved.
+
+Draw the is_annotated logo: ``Annotated[T, metadata]``, checked.
 
 Square brackets around a type, as a teal block, and its metadata, as a purple
 flag: the shape of ``Annotated[T, x]``. A yellow badge with a tick asks the
